@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+
+<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20" styleClass="root" stylesheets="@/css/styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VenteLocationController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+
+    <Label styleClass="title-label" text="Vente et Location de Parcelles" />
+
+    <!-- Champs pour sélectionner la parcelle, le type d'opération et le prix -->
+    <HBox spacing="10" alignment="CENTER">
+        <ComboBox fx:id="parcelleComboBox" promptText="Sélectionner une parcelle" prefWidth="200"/>
+        <ComboBox fx:id="typeOperationComboBox" promptText="Type d'opération" prefWidth="150"/>
+        <TextField fx:id="prixTextField" promptText="Entrer le prix" prefWidth="150"/>
+    </HBox>
+
+    <TableView fx:id="venteLocationTable" prefHeight="400" prefWidth="760">
+        <!-- Les colonnes seront définies dans setupTableColumns() -->
+    </TableView>
+
+    <HBox spacing="10">
+        <Button fx:id="addButton" text="Ajouter" onAction="#handleAdd"/>
+        <Button fx:id="modifyButton" text="Modifier" onAction="#handleModify"/>
+        <Button fx:id="deleteButton" text="Supprimer" onAction="#handleDelete"/>
+    </HBox>
+</VBox>

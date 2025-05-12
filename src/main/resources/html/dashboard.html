@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard des Parcelles - AgriSmart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sidebar">
+  <h2>AgriSmart</h2>
+  <button onclick="showSection('parcelles')">🌿 Parcelles</button>
+  <button onclick="showSection('analyse')">📊 Analyse</button>
+  <button onclick="showSection('vente')">🏷️ À vendre / À louer</button>
+  <button onclick="showSection('ia')">🤖 IA Chat</button>
+</div>
+
+<div class="main" id="main-content">
+  <h1>Liste des Parcelles</h1>
+  <div class="parcelles-container" id="parcelle-list">
+    <!-- Les cartes seront ajoutées dynamiquement ici -->
+  </div>
+</div>
+
+<script>
+  const parcelles = [
+    { code: "A1", culture: "Blé", image: "parcelle.jpg" },
+    { code: "B2", culture: "Maïs", image: "parcelle.jpg" },
+    // Ajoutez dynamiquement plus de parcelles si nécessaire
+  ];
+
+  function showSection(section) {
+    const main = document.getElementById("main-content");
+    if (section === 'parcelles') {
+      main.innerHTML = '<h1>Liste des Parcelles</h1><div class="parcelles-container" id="parcelle-list"></div>';
+      loadParcelles();
+    } else {
+      main.innerHTML = `<h1>Section ${section}</h1><p>Contenu à venir...</p>`;
+    }
+  }
+
+  function loadParcelles() {
+    const container = document.getElementById("parcelle-list");
+    parcelles.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+                    <img src="${p.image}" alt="${p.code}">
+                    <h3>Code: ${p.code}</h3>
+                    <p>Culture: ${p.culture}</p>
+                    <button>Modifier</button>
+                    <button>Supprimer</button>
+                `;
+      container.appendChild(card);
+    });
+  }
+
+  window.onload = loadParcelles;
+</script>
+</body>
+</html>

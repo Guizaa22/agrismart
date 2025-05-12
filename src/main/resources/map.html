@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carte Interactive</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <style>
+        html, body, #map { height: 100%; width: 100%; margin: 0; padding: 0; }
+        /* Style pour le conteneur pour éviter les barres de défilement inutiles */
+        body { overflow: hidden; }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    // Référence au contrôleur Java (sera injectée)
+    var javaController = null;
+    var map;
+    var marker = null; // Pour garder une référence au marqueur
+
+    function initMap() {
+        // Coordonnées initiales (par exemple, centre de la Tunisie ou une localisation par défaut)
+        var initialLat = 34.0;
+        var initialLon = 9.0;
+        var initialZoom = 6;
+
+        map = L.map('map').setView([initialLat, initialLon], initialZoom);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Écouteur d'événement pour le clic sur la carte
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            console.log("Clic détecté à Lat: " + lat + ", Lng: " + lng);
+
+            // Mettre à jour ou ajouter le marqueur
+            addOrUpdateMarker(lat, lng);
+
+            // Envoyer les coordonnées au contrôleur Java si disponible
+            if (javaController) {
+                try {
+                    javaController.setCoordinates(lat, lng);
+                } catch (error) {
+                    console.error("Erreur lors de l'appel de javaController.setCoordinates:", error);
+                }
+            } else {
+                console.warn("javaController non défini, impossible d'envoyer les coordonnées.");
+            }
+        });
+
+        console.log("Carte Leaflet initialisée.");
+    }
+
+    // Fonction pour ajouter ou déplacer le marqueur
+    function addOrUpdateMarker(lat, lng) {
+        if (marker) {
+            // Déplacer le marqueur existant
+            marker.setLatLng([lat, lng]);
+            console.log("Marqueur déplacé.");
+        } else {
+            // Créer un nouveau marqueur
+            marker = L.marker([lat, lng]).addTo(map);
+            console.log("Nouveau marqueur ajouté.");
+        }
+        // Optionnel: Centrer la carte sur le marqueur
+        // map.setView([lat, lng], map.getZoom());
+    }
+
+    // Fonction pour supprimer le marqueur (appelée depuis Java)
+    function removeMarker() {
+        if (marker) {
+            map.removeLayer(marker);
+            marker = null;
+            console.log("Marqueur supprimé.");
+        }
+    }
+
+    // Appelée par Java pour initialiser la communication
+    // On s'assure que l'objet 'javaController' est bien reçu.
+    // Note: Cette approche simple peut être améliorée pour gérer les timings.
+    // window.javaController est défini dans AjoutParcelleController.java
+    // L'appel se fait via : window.setMember("javaController", this);
+
+    // Initialiser la carte une fois le DOM prêt
+    document.addEventListener('DOMContentLoaded', function() {
+        initMap();
+    });
+
+    // Rendre la fonction accessible globalement si nécessaire pour le script Java
+    window.addOrUpdateMarker = addOrUpdateMarker;
+    window.removeMarker = removeMarker;
+
+
+</script>
+
+</body>
+</html>

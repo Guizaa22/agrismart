@@ -1,0 +1,232 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-background-color: linear-gradient(to bottom, #f4f4f4, #e8f5e9); /* Dégradé avec teinte verte */
+}
+
+/* Style pour le titre en haut */
+.header-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 18px;
+    -fx-text-fill: #2c3e50;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1); /* Ombre subtile */
+    -fx-border-color: transparent transparent #a5d6a7 transparent; /* Bordure verte en bas uniquement */
+    -fx-border-width: 0 0 2 0;
+}
+
+/* Style pour les labels du formulaire dans le GridPane */
+.form-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #446654; /* Vert foncé pour thème agriculture */
+    -fx-padding: 8px 0 2px 0;
+    -fx-border-color: transparent transparent #e0e0e0 transparent; /* Bordure subtile */
+    -fx-border-width: 0 0 1 0;
+}
+
+/* Styles communs pour les champs de saisie */
+.text-field,
+.text-area,
+.date-picker .text-field {
+    -fx-font-size: 13px;
+    -fx-prompt-text-fill: #a5d6a7; /* Vert clair pour le texte placeholder */
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Léger dégradé pour profondeur */
+}
+
+/* Style pour le TextArea spécifiquement */
+.text-area {
+    -fx-background-color: white;
+}
+
+.text-area .content {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 5px;
+}
+
+/* Style pour les champs de saisie lorsqu'ils ont le focus */
+.text-field:focused,
+.text-area:focused,
+.date-picker .text-field:focused {
+    -fx-border-color: #4CAF50; /* Bordure verte lors du focus pour thème agriculture */
+    -fx-border-width: 1.5px;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 175, 80, 0.4), 5, 0, 0, 0); /* Ombre verte */
+}
+
+/* Style pour les champs de saisie au survol */
+.text-field:hover,
+.text-area:hover,
+.date-picker:hover {
+    -fx-border-color: #81c784; /* Vert moyen au survol */
+    -fx-effect: dropshadow(three-pass-box, rgba(76, 175, 80, 0.2), 3, 0, 0, 0);
+}
+
+/* Style pour DatePicker */
+.date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #a5d6a7; /* Vert clair pour le bouton calendrier */
+    -fx-background-radius: 0 5 5 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #81c784; /* Vert moyen au survol */
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: white;
+}
+
+/* Style de base pour les boutons */
+.button {
+    -fx-font-size: 13px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0, 0, 1);
+    -fx-background-insets: 0, 0, 0, 0;
+}
+
+/* Bouton "Ajouter Parcelle" (Soumettre) */
+.submit-button {
+    -fx-background-color: linear-gradient(to bottom, #4CAF50, #388E3C); /* Dégradé vert pour thème agriculture */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 1, 1);
+}
+.submit-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #43A047, #2E7D32); /* Dégradé plus foncé au survol */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 7, 0, 1, 2);
+}
+.submit-button:pressed {
+    -fx-background-color: #2E7D32;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 0);
+    -fx-translate-y: 1px; /* Léger déplacement pour effet de pression */
+}
+
+/* Bouton "Retour à la Liste" (Annuler) */
+.cancel-button {
+    -fx-background-color: linear-gradient(to bottom, #bdc3c7, #95a5a6);
+    -fx-text-fill: #333333;
+}
+.cancel-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #abb1b5, #7f8c8d);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 1, 1);
+}
+.cancel-button:pressed {
+    -fx-background-color: #7f8c8d;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 0);
+    -fx-translate-y: 1px;
+}
+
+/* Bouton "Sélectionner sur la Carte" */
+.map-button {
+    -fx-background-color: linear-gradient(to bottom, #1abc9c, #16a085);
+    -fx-padding: 8px 14px;
+    -fx-graphic-text-gap: 8px; /* Espace entre l'icône et le texte */
+}
+.map-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #16a085, #0e6655);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 1, 1);
+}
+.map-button:pressed {
+    -fx-background-color: #0e6655;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 0);
+    -fx-translate-y: 1px;
+}
+
+/* Style pour le label des coordonnées */
+.coordinates-label {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    -fx-padding: 10px 12px;
+    -fx-border-color: #BDC3C7;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #34495E;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 3, 0, 0, 0);
+}
+
+/* Lorsque les coordonnées sont définies */
+.coordinates-set {
+    -fx-text-fill: #2E7D32; /* Vert foncé pour indiquer succès */
+    -fx-border-color: #a5d6a7;
+}
+
+/* Style de base pour le label de message */
+.message-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 0 0;
+    -fx-alignment: center;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 12px;
+    -fx-opacity: 0.9;
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+/* Styles spécifiques pour les messages succès/erreur */
+.message-label-success {
+    -fx-text-fill: #2ECC71;
+    -fx-background-color: rgba(46, 204, 113, 0.1); /* Fond vert très léger */
+    -fx-border-color: #2ECC71;
+    -fx-border-radius: 5px;
+    -fx-border-width: 0 0 0 3px; /* Bordure verte à gauche uniquement */
+}
+
+.message-label-error {
+    -fx-text-fill: #E74C3C;
+    -fx-background-color: rgba(231, 76, 60, 0.1); /* Fond rouge très léger */
+    -fx-border-color: #E74C3C;
+    -fx-border-radius: 5px;
+    -fx-border-width: 0 0 0 3px; /* Bordure rouge à gauche uniquement */
+}
+
+/* Style pour le conteneur du formulaire */
+.form-container {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e0e0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Style pour les groupes de champs */
+.field-group {
+    -fx-spacing: 5px;
+    -fx-padding: 5px 0;
+}
+
+/* Checkbox amélioré */
+.check-box {
+    -fx-text-fill: #446654;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+
+.check-box:selected .box {
+    -fx-background-color: #4CAF50;
+}

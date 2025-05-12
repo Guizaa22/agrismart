@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.CheckBox?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #FFFFFF; -fx-padding: 20;"
+      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12"
+      fx:controller="controllers.AjoutParcelleController">
+
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #3498DB;"
+           text="Ajouter une Nouvelle Parcelle" />
+
+    <VBox spacing="10">
+        <Label text="Code Parcelle:" />
+        <TextField fx:id="codeParcelleField" promptText="Ex: P001" />
+    </VBox>
+
+    <VBox spacing="10">
+        <Label text="Type Culture:" />
+        <TextField fx:id="typeCultureField" promptText="Ex: Blé, Tomates" />
+    </VBox>
+
+    <VBox spacing="10">
+        <Label text="Superficie (ha):" />
+        <TextField fx:id="superficieField" promptText="Ex: 10.5" />
+    </VBox>
+
+    <VBox spacing="10">
+        <Button onAction="#handleOpenMapWindow" text="Choisir Emplacement sur la carte"
+                style="-fx-background-color: #3498DB; -fx-text-fill: white;" />
+    </VBox>
+
+    <VBox spacing="10">
+        <Label text="Notes:" />
+        <TextArea fx:id="notesArea" promptText="Informations supplémentaires..." wrapText="true" />
+    </VBox>
+
+    <VBox spacing="10">
+        <Label text="Status:" />
+        <CheckBox fx:id="statusCheckBox" />
+    </VBox>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Annuler" onAction="#handleCancel"
+                style="-fx-background-color: #7F8C8D; -fx-text-fill: white;" />
+        <Button text="Ajouter" onAction="#handleAdd"
+                style="-fx-background-color: #3498DB; -fx-text-fill: white;" />
+    </HBox>
+</VBox>

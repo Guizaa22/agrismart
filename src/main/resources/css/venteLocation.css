@@ -1,0 +1,29 @@
+/* Reuse or extend from listeParcelle.css */
+.root {
+    -fx-background-image: url('/images/nature_background.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-padding: 10;
+}
+
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view {
+    -fx-background-color: derive(#4CAF50, 20%);
+}
+
+.button {
+    -fx-background-color: #388E3C;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 5 10 5 10;
+    -fx-background-radius: 3;
+}
+
+.button:hover {
+    -fx-background-color: #2E7D32;
+}

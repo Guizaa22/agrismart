@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="15" style="-fx-background-color: #ECF0F1; -fx-padding: 20;" stylesheets="@/css/parcelleDetails.css"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParcelleDetailsController">
+    <Label text="Détails de la Parcelle" styleClass="title-label"/>
+
+    <Label text="Code Parcelle:" styleClass="field-label"/>
+    <TextField fx:id="codeParcelleField" styleClass="text-field" editable="false"/>
+
+    <Label text="Type Culture:" styleClass="field-label"/>
+    <TextField fx:id="typeCultureField" styleClass="text-field" editable="false"/>
+
+    <Label text="Superficie:" styleClass="field-label"/>
+    <TextField fx:id="superficieField" styleClass="text-field" editable="false"/>
+
+    <Label text="Longitude:" styleClass="field-label"/>
+    <TextField fx:id="longitudeField" styleClass="text-field" editable="false"/>
+
+    <Label text="Latitude:" styleClass="field-label"/>
+    <TextField fx:id="latitudeField" styleClass="text-field" editable="false"/>
+
+    <Label text="Date Création:" styleClass="field-label"/>
+    <TextField fx:id="dateCreationField" styleClass="text-field" editable="false"/>
+
+    <Label text="Notes:" styleClass="field-label"/>
+    <TextField fx:id="notesField" styleClass="text-field" editable="false"/>
+
+    <Label text="Disponible pour Vente/Location:" styleClass="field-label"/>
+    <CheckBox fx:id="statusCheckBox" disable="true"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Modifier" onAction="#handleModify" styleClass="modify-button"/>
+        <Button text="Supprimer" onAction="#handleDelete" styleClass="delete-button"/>
+    </HBox>
+</VBox>
